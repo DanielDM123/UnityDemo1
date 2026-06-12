@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Card
@@ -7,11 +6,11 @@ namespace Card
     public class Card : ScriptableObject
     {
         public string cardName;
-        public List<CardType> cardType;
+        public CardType cardType;
         public int health;
         public int damageMin;
         public int damageMax;
-        public List<DamageType> damageType;
+        public DamageType damageType;
 
 
         public enum CardType
