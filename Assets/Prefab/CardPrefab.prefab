@@ -867,8 +867,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 0.25
+  m_fontSizeBase: 0.25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -896,7 +896,7 @@ MonoBehaviour:
   m_isRichText: 1
   m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
   m_verticalMapping: 0
@@ -996,6 +996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7637679513913390088}
+  - component: {fileID: 4539367572999590638}
   m_Layer: 0
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -1019,6 +1020,28 @@ Transform:
   - {fileID: 7520136232898787512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4539367572999590638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001443103184878844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e33d05b4938ff4187cae382ac4e7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardDisplay
+  cardData: {fileID: 0}
+  cardImage: {fileID: 8600543493276322874}
+  nameText: {fileID: 5424864792412351451}
+  healthText: {fileID: 3432703225576242734}
+  damageText: {fileID: 2389691042780019797}
+  typeImages:
+  - {fileID: 1166491367951299252}
+  - {fileID: 9066855748451924557}
+  - {fileID: 1612720097933553223}
+  - {fileID: 800593923536311408}
 --- !u!1 &8134338430087547049
 GameObject:
   m_ObjectHideFlags: 0

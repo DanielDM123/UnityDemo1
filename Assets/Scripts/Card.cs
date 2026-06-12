@@ -1,12 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace Card
+namespace Project
 {
     [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
     public class Card : ScriptableObject
     {
         public string cardName;
-        public CardType cardType;
+        public List<CardType> cardType;
         public int health;
         public int damageMin;
         public int damageMax;

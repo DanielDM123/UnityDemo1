@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Sine
   m_EditorClassIdentifier: Assembly-CSharp::Card.Card
   cardName: Sine
-  cardType: 0300000001000000
+  cardType: 030000000100000000000000
   health: 1
   damageMin: 0
   damageMax: 1
-  damageType: 0400000005000000
+  cardSpirte: {fileID: 0}
+  damageType: 1110788928
