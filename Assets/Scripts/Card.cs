@@ -10,6 +10,7 @@ namespace Card
         public int health;
         public int damageMin;
         public int damageMax;
+        public Sprite cardSpirte;
         public DamageType damageType;
 
 
