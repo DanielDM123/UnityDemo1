@@ -17,6 +17,7 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text healthText;
     public TMP_Text damageText;
     public Image[] typeImages;
+    public Image damageImage;
 
     private Color[] cardColors =
 {
@@ -50,7 +51,7 @@ public class CardDisplay : MonoBehaviour
     {
         // Update the background of the card based on the first card type
         cardImage.color = cardColors[(int)cardData.cardType[0]];
-
+        damageImage.color = typeColors[(int)cardData.damageType[0]];
 
         // Update the string & int values from the template
         nameText.text = cardData.cardName;

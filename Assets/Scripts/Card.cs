@@ -12,7 +12,7 @@ namespace Project
         public int damageMin;
         public int damageMax;
         public Sprite cardSpirte;
-        public DamageType damageType;
+        public List<DamageType> damageType;
 
 
         public enum CardType

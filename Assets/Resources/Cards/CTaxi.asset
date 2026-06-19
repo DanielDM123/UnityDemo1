@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f849c86a574c0c4d9de457de0d827ec, type: 3}
-  m_Name: Sine
-  m_EditorClassIdentifier: Assembly-CSharp::Card.Card
-  cardName: Sine
-  cardType: 030000000100000000000000
-  health: 1
-  damageMin: 0
-  damageMax: 1
+  m_Name: CTaxi
+  m_EditorClassIdentifier: Assembly-CSharp::Project.Card
+  cardName: CTaxi
+  cardType: 0100000005000000
+  health: 13
+  damageMin: 4
+  damageMax: 9
   cardSpirte: {fileID: 0}
-  damageType: 00000000
+  damageType: 04000000
