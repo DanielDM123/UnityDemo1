@@ -493,7 +493,7 @@ MonoBehaviour:
   fanSpread: -7.5
   cardSpacing: 150
   verticalSpacing: 100
-  maxHandSize: 5
+  maxHandSize: 10
   cardsInHand: []
 --- !u!1 &1807126556
 GameObject:
@@ -553,6 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024711968}
+  - component: {fileID: 2024711969}
   m_Layer: 5
   m_Name: HandPosition
   m_TagString: Untagged
@@ -579,6 +580,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -480}
   m_SizeDelta: {x: 101.143, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2024711969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024711967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d76e09035188848bb9bdb12f0a7922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIPosistionObject
+  objectToPosition: {fileID: 2024711968}
+  widthDivider: 2
+  heightDivider: 2
+  widthMultiplier: 1
+  heightMultiplier: 0
+  updatePosition: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

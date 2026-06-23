@@ -20,12 +20,21 @@ public class ArcRenderer : MonoBehaviour
     public int dotsToSkip = 1;  // the number of dots to skip to give the arrowhead space
     private Vector3 arrowDirection; // hodl the position the arrowhead needs to point from 
 
+    public float baseScreenWidth = 1920f;
+    [SerializeField] private float spacingScale;
 
     void Start()
     {
         arrowInstance = Instantiate(arrowPrefab, transform);
         arrowInstance.transform.localPosition = Vector3.zero;
         InitializeDotPool(poolSize);
+
+        spacingScale = Screen.width / baseScreenWidth;
+    }
+    
+    private void OnEnable()
+    {
+        spacingScale = Screen.width / baseScreenWidth;
     }
 
     void Update()
@@ -78,7 +87,7 @@ public class ArcRenderer : MonoBehaviour
 
     private void UpdateArc(Vector3 start, Vector3 mid, Vector3 end)
     {
-        int numDots = Mathf.CeilToInt(Vector3.Distance(start, end) / spacing);
+        int numDots = Mathf.CeilToInt(Vector3.Distance(start, end) / (spacing * spacingScale));
 
         for (int i = 0; i < numDots && i < dotPool.Count; i++)
         {

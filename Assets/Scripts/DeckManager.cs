@@ -34,7 +34,11 @@ public class DeckManager : MonoBehaviour
         }
 
         Card nextCard = allCards[currentIndex];
-        handManager.AddCardToHand(nextCard);
-        currentIndex = (currentIndex + 1) % allCards.Count;
+        bool addedCard = handManager.AddCardToHand(nextCard);
+        if (addedCard)
+        {
+            currentIndex = (currentIndex + 1) % allCards.Count;
+        }
+        
     }
 }
