@@ -1,14 +1,19 @@
-using UnityEngine;
 using Project;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEngine;
+using UnityEngine.XR;
 
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
+    private HandManager handManager;
 
     private int currentIndex = 0;
+    public int startingHandSize = 6;
+    public int maxHandSize;
+    public int currentHandSize;
 
     void Start()
     {
@@ -18,12 +23,22 @@ public class DeckManager : MonoBehaviour
         // Put the loaded cards into the allCards list
         allCards.AddRange(cards);
 
-        HandManager hand = FindObjectOfType<HandManager>();
-        for (int i = 0; i < 6; i++)
+        handManager = FindObjectOfType<HandManager>();
+        maxHandSize = handManager.getMaxHandSize();
+        for (int i = 0; i < startingHandSize; i++)
         {
-            DrawCard(hand);
+            DrawCard(handManager);
+            
         }
 
+    }
+
+    void Update()
+    {
+        if (handManager != null)
+        {
+            currentHandSize = handManager.cardsInHand.Count;
+        }
     }
 
     public void DrawCard(HandManager handManager)
@@ -32,13 +47,14 @@ public class DeckManager : MonoBehaviour
         {
             return;
         }
-
-        Card nextCard = allCards[currentIndex];
-        bool addedCard = handManager.AddCardToHand(nextCard);
-        if (addedCard)
+        
+        if (currentHandSize < maxHandSize)
         {
+            Card nextCard = allCards[currentIndex];                  
+            handManager.AddCardToHand(nextCard);
             currentIndex = (currentIndex + 1) % allCards.Count;
         }
         
+
     }
 }
