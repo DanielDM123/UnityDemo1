@@ -15,6 +15,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation; // og rotation of the card
     private Vector3 originalPosition;  // og position of the 
 
+    private readonly int maxColumn = 2;
+
     [SerializeField] private float selectScale = 1.1f;
     [SerializeField] private Vector3 cardPlay;
     [SerializeField] private Vector3 playPosition; 
@@ -94,6 +96,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private void TransitionToState0()
     {
         currentState = 0;
+        GameManager.Instance.PlayingCard = false;
         rectTransform.localScale = originalScale; // Reset Scale
         rectTransform.localPosition = originalPosition; // Reset position
         rectTransform.localRotation = originalRotation; // Reset rotation 
@@ -158,6 +161,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private void HandlePlayState()
     {
+        if (!GameManager.Instance.PlayingCard)
+        {
+            GameManager.Instance.PlayingCard = true;
+        }
+
         rectTransform.localPosition = playPosition;
         rectTransform.localRotation = Quaternion.identity;
 
