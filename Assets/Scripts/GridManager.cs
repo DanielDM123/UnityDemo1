@@ -43,13 +43,14 @@ public class GridManager : MonoBehaviour
 
     public bool AddObjectToGrid(GameObject obj, Vector2 gridPosition)
     {
+      
         // Make sure we are in-bounds
         if (gridPosition.x >= width && gridPosition.x < 0 && gridPosition.y >= height && gridPosition.y < 0)
         {
             return false;
         }
 
-        GridCell cell = gridCells[(int)gridPosition.y, (int)gridPosition.y].GetComponent<GridCell>();
+        GridCell cell = gridCells[(int)gridPosition.x, (int)gridPosition.y].GetComponent<GridCell>();
 
         if (cell.cellFull)
         {

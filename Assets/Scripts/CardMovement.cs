@@ -17,6 +17,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private readonly int maxColumn = 2;
 
+    private GridManager gridManager;
+
     [SerializeField] private float selectScale = 1.1f;
     [SerializeField] private Vector3 cardPlay;
     [SerializeField] private Vector3 playPosition; 
@@ -51,7 +53,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
         updateCardPlayPosition();
         updatePlayPosition();
-
+        gridManager = FindObjectOfType<GridManager>();
     }
 
     void Update()
@@ -82,10 +84,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 break;
             case 3:
                 HandlePlayState();
-                if (!Input.GetMouseButton(0))
-                {
-                    TransitionToState0();
-                }
+
                 break;
 
         }
@@ -168,6 +167,29 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
         rectTransform.localPosition = playPosition;
         rectTransform.localRotation = Quaternion.identity;
+
+        if (!Input.GetMouseButton(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            // Check if we let go on a gridcell object 
+            if (hit.collider != null && hit.collider.GetComponent<GridCell>())
+            {
+                GridCell cell = hit.collider.GetComponent<GridCell>();
+                Vector2 targetPos = cell.gridIndex;
+
+                // Check to see if we can add the character to the cell 
+                if (gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
+                {
+                    HandManager handManager = FindAnyObjectByType<HandManager>();
+                    handManager.cardsInHand.Remove(gameObject);
+                    handManager.UpdateHandVisuals();
+                    Destroy(gameObject);
+                }
+            }
+            TransitionToState0();
+        }
 
         if (Input.mousePosition.y < cardPlay.y)
         {

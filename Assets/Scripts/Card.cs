@@ -13,6 +13,10 @@ namespace Project
         public int damageMax;
         public Sprite cardSpirte;
         public List<DamageType> damageType;
+        public int range;
+        public AttackPattern attackPattern;
+        public PriorityTarget priorityTarget;
+        public GameObject prefab;
 
 
         public enum CardType
@@ -34,5 +38,28 @@ namespace Project
             Light,
             Air
         }
+
+        public enum AttackPattern
+        {
+            Single,
+            Multitarget,
+            Cross,
+            Column,
+            Row,
+            TwoByTwo,
+            FourByFour
+
+        }
+
+        public enum PriorityTarget
+        {
+            Close,
+            Far,
+            LeastCurrentHealth,
+            MostCurrentHealth,
+            MostMaxHealth,
+            MostDamage
+        }
+
     }
 }

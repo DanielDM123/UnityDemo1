@@ -18,6 +18,7 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text damageText;
     public Image[] typeImages;
     public Image damageImage;
+    public Image displayImage;
 
     private Color[] cardColors =
 {
@@ -39,11 +40,11 @@ public class CardDisplay : MonoBehaviour
         new Color(0.83f, 0.94f, 0.94f) // Air
     };
     
-    void Start()
-    {
-        UpdateCardDisplay();
-        // Debug.Log(damageText);
-    }
+    //void Start()
+    //{
+    //    UpdateCardDisplay();
+    //    // Debug.Log(damageText);
+    //}
 
     // Read from the card template and store them into the vars
     // so that we can display it
@@ -58,6 +59,7 @@ public class CardDisplay : MonoBehaviour
         //nameText.text = "asdf";
         healthText.text = cardData.health.ToString();
         damageText.text = $"{cardData.damageMin}-{cardData.damageMax}";
+        displayImage.sprite = cardData.cardSpirte;
 
 
         // Update the type images

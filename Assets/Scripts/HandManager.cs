@@ -46,6 +46,7 @@ public class HandManager : MonoBehaviour
 
         // Add the data from the inputed card into the new object we just created
         newCard.GetComponent<CardDisplay>().cardData = cardData;
+        newCard.GetComponent<CardDisplay>().UpdateCardDisplay();
 
         UpdateHandVisuals();
         return true;
@@ -53,7 +54,7 @@ public class HandManager : MonoBehaviour
     }
 
 
-    private void UpdateHandVisuals()
+    public void UpdateHandVisuals()
     {
         int cardCount = cardsInHand.Count;
 

@@ -40,6 +40,13 @@ public class GridCell : MonoBehaviour
         sprite.color = originalColor;
     }
 
+    private void OnMouseOver()
+    {
+        //Debug.Log(gridIndex.x + " " + gridIndex.y);
+        //Debug.Log(cellFull);
+        //Debug.Log("===========================================");
+    }
+
 
 
 }

@@ -1082,6 +1082,7 @@ MonoBehaviour:
   - {fileID: 1612720097933553223}
   - {fileID: 800593923536311408}
   damageImage: {fileID: 4797069687529497044}
+  displayImage: {fileID: 6051126852465873935}
 --- !u!61 &3529997106734034892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1283,6 +1284,8 @@ MonoBehaviour:
   spacing: 40
   arrowAngleAdjustment: 125
   dotsToSkip: 2
+  baseScreenWidth: 1920
+  spacingScale: 0
 --- !u!1 &8910004264883742817
 GameObject:
   m_ObjectHideFlags: 0
