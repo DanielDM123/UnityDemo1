@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer))] // typeof(gridCell)
 public class GridCell : MonoBehaviour
 {
     public Vector2 gridIndex;
@@ -13,10 +13,21 @@ public class GridCell : MonoBehaviour
     public Color negColor = Color.red;
     private Color originalColor;
 
+    public GameObject[] backgrounds;
+    private bool setbackground = false;
+
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
+    }
+
+    void Update()
+    {
+        if (!setbackground)
+        {
+            SetBackground();
+        }
     }
 
     void OnMouseEnter()
@@ -45,6 +56,20 @@ public class GridCell : MonoBehaviour
         //Debug.Log(gridIndex.x + " " + gridIndex.y);
         //Debug.Log(cellFull);
         //Debug.Log("===========================================");
+    }
+
+    private void SetBackground()
+    {
+        if (gridIndex.x % 2 != 0)
+        {
+            backgrounds[0].SetActive(true);
+        }
+
+        if (gridIndex.y % 2 != 0)
+        {
+            backgrounds[1].SetActive(true);
+        }
+        setbackground = true;
     }
 
 

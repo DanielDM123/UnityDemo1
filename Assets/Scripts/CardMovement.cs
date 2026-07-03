@@ -180,7 +180,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 Vector2 targetPos = cell.gridIndex;
 
                 // Check to see if we can add the character to the cell 
-                if (gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
+                if (cell.gridIndex.x < maxColumn && gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
                 {
                     HandManager handManager = FindAnyObjectByType<HandManager>();
                     handManager.cardsInHand.Remove(gameObject);
