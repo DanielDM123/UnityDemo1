@@ -13,7 +13,7 @@ public class HandManager : MonoBehaviour
     public float fanSpread = -7.5f;
     public float cardSpacing = 100f;
     public float verticalSpacing = 100f;
-    public int maxHandSize = 20; // max size = Normal draw size * 2
+    public int maxHandSize; // max size = Normal draw size * 2
 
     public List<GameObject> cardsInHand = new List<GameObject>();// Hold a list of card objs
 
@@ -26,6 +26,10 @@ public class HandManager : MonoBehaviour
     void Update()
     {
         // UpdateHandVisuals();
+    }
+    public void BattleSetup(int setMaxHandSize)
+    {
+        maxHandSize = setMaxHandSize;
     }
 
 

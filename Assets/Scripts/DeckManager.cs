@@ -9,11 +9,12 @@ public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
     private HandManager handManager;
+    private DrawPileManager drawPileManager;
 
-    private int currentIndex = 0;
     public int startingHandSize = 6;
-    public int maxHandSize;
+    public int maxHandSize = 12;
     public int currentHandSize;
+    private bool startBattleRun = true;
 
     void Start()
     {
@@ -23,38 +24,37 @@ public class DeckManager : MonoBehaviour
         // Put the loaded cards into the allCards list
         allCards.AddRange(cards);
 
-        handManager = FindObjectOfType<HandManager>();
-        maxHandSize = handManager.getMaxHandSize();
-        for (int i = 0; i < startingHandSize; i++)
+
+    }
+
+    void Awake()
+    {
+        if (drawPileManager == null)
         {
-            DrawCard(handManager);
-            
+            drawPileManager = FindObjectOfType<DrawPileManager>();
         }
 
+        if (handManager == null)
+        {
+            handManager = FindObjectOfType<HandManager>();
+        }
     }
 
     void Update()
     {
-        if (handManager != null)
+        if (startBattleRun)
         {
-            currentHandSize = handManager.cardsInHand.Count;
+            BattleSetup();
         }
     }
 
-    public void DrawCard(HandManager handManager)
-    {
-        if (allCards.Count == 0)
-        {
-            return;
-        }
-        
-        if (currentHandSize < maxHandSize)
-        {
-            Card nextCard = allCards[currentIndex];                  
-            handManager.AddCardToHand(nextCard);
-            currentIndex = (currentIndex + 1) % allCards.Count;
-        }
-        
 
+    public void BattleSetup()
+    {
+        handManager.BattleSetup(maxHandSize);
+        Debug.Log("allCards size: " + allCards.Count);
+        drawPileManager.MakeDrawPile(allCards);
+        drawPileManager.BattleSetup(startingHandSize, maxHandSize);
+        startBattleRun = false;
     }
 }

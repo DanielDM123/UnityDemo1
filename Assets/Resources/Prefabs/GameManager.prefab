@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49e1bf5a7e1e23488a370bf68862389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  PlayingCard: 0
 --- !u!1001 &17716581816345003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,6 +219,10 @@ PrefabInstance:
     - target: {fileID: 4996638510520121681, guid: 73cb209e93142e541b38aab7df3a8d20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130995478491807140, guid: 73cb209e93142e541b38aab7df3a8d20, type: 3}
+      propertyPath: maxHandSize
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9071734207022767189, guid: 73cb209e93142e541b38aab7df3a8d20, type: 3}
       propertyPath: m_Name

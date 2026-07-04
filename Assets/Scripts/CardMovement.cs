@@ -15,7 +15,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation; // og rotation of the card
     private Vector3 originalPosition;  // og position of the 
 
-    private readonly int maxColumn = 2;
+    private readonly int maxColumn = 5;
 
     private GridManager gridManager;
 
@@ -183,8 +183,13 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 if (cell.gridIndex.x < maxColumn && gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
                 {
                     HandManager handManager = FindAnyObjectByType<HandManager>();
+                    DiscardManager discardManager = FindAnyObjectByType<DiscardManager>();
+
                     handManager.cardsInHand.Remove(gameObject);
                     handManager.UpdateHandVisuals();
+
+                    discardManager.AddToDiscard(GetComponent<CardDisplay>().cardData);
+
                     Destroy(gameObject);
                 }
             }
