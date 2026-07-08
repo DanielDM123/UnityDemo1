@@ -3,23 +3,16 @@ using System.Collections.Generic;
 
 namespace Project
 {
-    [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
+    
     public class Card : ScriptableObject
     {
         public string cardName;
-        public List<CardType> cardType;
-        public int health;
-        public int damageMin;
-        public int damageMax;
+        public List<ElementType> cardType;
         public Sprite cardSpirte;
-        public List<DamageType> damageType;
-        public int range;
-        public AttackPattern attackPattern;
-        public PriorityTarget priorityTarget;
-        public GameObject prefab;
+        public string description;
 
 
-        public enum CardType
+        public enum ElementType
         {
             Fire,
             Earth,
@@ -29,15 +22,7 @@ namespace Project
             Air
         }
 
-        public enum DamageType
-        {
-            Fire,
-            Earth,
-            Water,
-            Dark,
-            Light,
-            Air
-        }
+
 
         public enum AttackPattern
         {
@@ -59,6 +44,23 @@ namespace Project
             MostCurrentHealth,
             MostMaxHealth,
             MostDamage
+        }
+
+        public enum SpellType
+        {
+            Buff,
+            Debuff
+        }
+        
+        public enum AttributeTarget
+        {
+            health,
+            damage,
+            range,
+            attackPattern,
+            damangeType,
+            cardType,
+            priorityTarget
         }
 
     }

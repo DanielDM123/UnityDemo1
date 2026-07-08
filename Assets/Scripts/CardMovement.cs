@@ -36,6 +36,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private bool needUpdatePlayPosition = false; // for debugging
 
     private LayerMask gridLayerMask;
+    private LayerMask characterLayerMask;
+
+    private Card cardData;
+    private CardDisplay cardDisplay;
+    HandManager handManager;
+    DiscardManager discardManager;
 
     void Awake()
     {
@@ -55,7 +61,13 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         updatePlayPosition();
         gridManager = FindObjectOfType<GridManager>();
 
+        handManager = FindObjectOfType<HandManager>();
+        discardManager = FindObjectOfType<DiscardManager>();
+        cardDisplay = GetComponent<CardDisplay>();
+
         gridLayerMask = LayerMask.GetMask("Grid"); // you can add multiple layers if you want
+        characterLayerMask = LayerMask.GetMask("Characters");
+        cardData = cardDisplay.cardData;
     }
 
     void Update()
@@ -173,28 +185,19 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (!Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
 
-            // Check if we let go on a gridcell object 
-            if (hit.collider != null && hit.collider.GetComponent<GridCell>())
+            // Specific card changes
+            if (cardData is Character characterCard)
             {
-                GridCell cell = hit.collider.GetComponent<GridCell>();
-                Vector2 targetPos = cell.gridIndex;
-
-                // Check to see if we can add the character to the cell 
-                if (cell.gridIndex.x < maxColumn && gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
-                {
-                    HandManager handManager = FindAnyObjectByType<HandManager>();
-                    DiscardManager discardManager = FindAnyObjectByType<DiscardManager>();
-
-                    handManager.cardsInHand.Remove(gameObject);
-                    handManager.UpdateHandVisuals();
-
-                    discardManager.AddToDiscard(GetComponent<CardDisplay>().cardData);
-
-                    Destroy(gameObject);
-                }
+                TryToPlayCharacterCard(ray, characterCard);
             }
+
+            if (cardData is Spell spellCard)
+            {
+                TryToPlaySpellCard(ray, spellCard);
+            }
+
+
             TransitionToState0();
         }
 
@@ -202,6 +205,45 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         {
             currentState = 2;
             playArrow.SetActive(false);
+        }
+    }
+
+    private void TryToPlayCharacterCard(Ray ray, Character charaterCard)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
+
+        // Check if we let go on a gridcell object 
+        if (hit.collider != null && hit.collider.GetComponent<GridCell>())
+        {
+            GridCell cell = hit.collider.GetComponent<GridCell>();
+            Vector2 targetPos = cell.gridIndex;
+
+            // Check to see if we can add the character to the cell 
+            if (cell.gridIndex.x < maxColumn && gridManager.AddObjectToGrid(charaterCard.prefab, targetPos))
+            {
+                handManager.cardsInHand.Remove(gameObject);
+                discardManager.AddToDiscard(cardData);
+
+                handManager.UpdateHandVisuals();
+
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void TryToPlaySpellCard(Ray ray, Spell spellCard)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, characterLayerMask);
+
+        if (hit.collider != null)
+        {
+            handManager.cardsInHand.Remove(gameObject);
+            discardManager.AddToDiscard(cardData);
+
+            handManager.UpdateHandVisuals();
+
+            Destroy(gameObject);
+            
         }
     }
 
