@@ -15,7 +15,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation; // og rotation of the card
     private Vector3 originalPosition;  // og position of the 
 
-    private readonly int maxColumn = 5;
+    private readonly int maxColumn = 2;
 
     private GridManager gridManager;
 
@@ -35,7 +35,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private float playPositionXMultiplier = 3f;
     [SerializeField] private bool needUpdatePlayPosition = false; // for debugging
 
-
+    private LayerMask gridLayerMask;
 
     void Awake()
     {
@@ -54,6 +54,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         updateCardPlayPosition();
         updatePlayPosition();
         gridManager = FindObjectOfType<GridManager>();
+
+        gridLayerMask = LayerMask.GetMask("Grid"); // you can add multiple layers if you want
     }
 
     void Update()
@@ -171,7 +173,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (!Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
 
             // Check if we let go on a gridcell object 
             if (hit.collider != null && hit.collider.GetComponent<GridCell>())
