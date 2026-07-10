@@ -52,7 +52,7 @@ public class DeckManager : MonoBehaviour
     public void BattleSetup()
     {
         handManager.BattleSetup(maxHandSize);
-        Debug.Log("allCards size: " + allCards.Count);
+        //Debug.Log("allCards size: " + allCards.Count);
         drawPileManager.MakeDrawPile(allCards);
         drawPileManager.BattleSetup(startingHandSize, maxHandSize);
         startBattleRun = false;

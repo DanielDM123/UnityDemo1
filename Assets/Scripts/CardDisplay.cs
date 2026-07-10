@@ -108,9 +108,9 @@ public class CardDisplay : MonoBehaviour
 
     private void UpdateDisplayCharacterCard(Character characterCard)
     {
-        spellElements.SetActive(false);
-        characterElements.SetActive(true);
-        characterCardLabel.SetActive(true);
+        //spellElements.SetActive(false);
+        //characterElements.SetActive(true);
+        //characterCardLabel.SetActive(true);
 
         damageImage.color = typeColors[(int)characterCard.damageType[0]];
         healthText.text = characterCard.health.ToString();
@@ -120,16 +120,16 @@ public class CardDisplay : MonoBehaviour
 
     private void UpdateDisplaySpellCard(Spell spellCard)
     {
-        spellElements.SetActive(true);
-        characterElements.SetActive(false);
-        spellCardLabel.SetActive(true);
+        //spellElements.SetActive(true);
+        //characterElements.SetActive(false);
+        //spellCardLabel.SetActive(true);
 
         // Set correct spell type lable
         foreach (GameObject label in spellTypelabels)
         {
             label.SetActive(false);
         }
-        spellTypelabels[(int)spellCard.spellType].SetActive(true);
+        //spellTypelabels[(int)spellCard.spellType].SetActive(true);
 
         // Reset and update attribute target symbols
         foreach (GameObject symbol in attributeTargetSymbols)

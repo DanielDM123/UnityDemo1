@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f2a6d512fb2c594aacb24794fa1e3e9, type: 3}
-  m_Name: CTaxi
+  m_Name: Resupine
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  cardName: CTaxi
-  cardType: 0400000001000000
-  cardSpirte: {fileID: -2629138569536655042, guid: 081139b90e4020148ae65d756ed53df2, type: 3}
-  description: Fallen Angel
-  health: 23
-  damageMin: 54
-  damageMax: 87
-  damageType: 0200000004000000
-  range: 4
+  cardName: Resupine
+  cardType: 0000000005000000
+  cardSpirte: {fileID: 4122067075425446510, guid: 4c2efa55c8dd1a9458b9efc2e0d410bc, type: 3}
+  description: Golem
+  health: 54
+  damageMin: 23
+  damageMax: 654
+  damageType: 02000000
+  range: 2
   attackPattern: 0
   priorityTarget: 0
-  prefab: {fileID: 1797753984441286, guid: e0bd3015af80d894da39ba968ceb587e, type: 3}
+  prefab: {fileID: 3032672657413112226, guid: ce9de6eff68268441bd3dbe5c5b088c9, type: 3}

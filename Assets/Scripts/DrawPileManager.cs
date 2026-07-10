@@ -60,8 +60,8 @@ public class DrawPileManager : MonoBehaviour
 
         if (currentHandSize < maxHandSize)
         {
-            Debug.Log("drawPile count: " + drawPile.Count);
-            Debug.Log("currentIndex: " + currentIndex);
+            //Debug.Log("drawPile count: " + drawPile.Count);
+            //Debug.Log("currentIndex: " + currentIndex);
             Card nextCard = drawPile[currentIndex];
             handManager.AddCardToHand(nextCard);
 

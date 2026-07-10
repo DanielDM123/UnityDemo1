@@ -792,7 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrawPileManager
   drawPile: []
   startingHandSize: 6
-  maxHandSize: 0
+  maxHandSize: 12
   currentHandSize: 0
   drawPileCounter: {fileID: 1743410340}
 --- !u!1 &807504755
@@ -1589,6 +1589,10 @@ PrefabInstance:
     - target: {fileID: 2482906103550237897, guid: e2462534d591aa44fad2f41f5cb4a345, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970640807522891527, guid: e2462534d591aa44fad2f41f5cb4a345, type: 3}
+      propertyPath: maxHandSize
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2970640807522891527, guid: e2462534d591aa44fad2f41f5cb4a345, type: 3}
       propertyPath: startingHandSize

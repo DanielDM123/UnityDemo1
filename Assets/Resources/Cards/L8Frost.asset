@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f849c86a574c0c4d9de457de0d827ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f2a6d512fb2c594aacb24794fa1e3e9, type: 3}
   m_Name: L8Frost
-  m_EditorClassIdentifier: Assembly-CSharp::Project.Card
+  m_EditorClassIdentifier: Assembly-CSharp::Character
   cardName: L8Frost
-  cardType: 0200000004000000
-  health: 9
-  damageMin: 1
-  damageMax: 7
+  cardType: 0200000003000000
   cardSpirte: {fileID: 4122067075425446510, guid: 4c2efa55c8dd1a9458b9efc2e0d410bc, type: 3}
-  damageType: 04000000
-  range: 0
+  description: Golem
+  health: 43
+  damageMin: 23
+  damageMax: 64
+  damageType: 00000000
+  range: 3
   attackPattern: 0
   priorityTarget: 0
   prefab: {fileID: 3032672657413112226, guid: ce9de6eff68268441bd3dbe5c5b088c9, type: 3}

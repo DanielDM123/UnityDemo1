@@ -83,6 +83,10 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             updatePlayPosition();
         }
 
+        if (cardData != cardDisplay.cardData)
+        {
+            cardData = cardDisplay.cardData;
+        }
 
         switch (currentState)
         {
@@ -185,7 +189,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (!Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+            Debug.Log("Inside HandlePlayState");
+            Debug.Log("cardData: " + cardData);
             // Specific card changes
             if (cardData is Character characterCard)
             {
@@ -211,6 +216,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private void TryToPlayCharacterCard(Ray ray, Character charaterCard)
     {
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
+        Debug.Log("Inside TryToPlayCharacterCard");
 
         // Check if we let go on a gridcell object 
         if (hit.collider != null && hit.collider.GetComponent<GridCell>())
